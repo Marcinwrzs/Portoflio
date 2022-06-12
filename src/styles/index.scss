@@ -1,0 +1,398 @@
+@import "variables.scss";
+@import "bulb.scss";
+
+body {
+  color: $font-color-day;
+  font-family: Poppins, sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  background-color: $section-color-day;
+
+  h1 {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+  }
+
+  h2 {
+    color: $font-color-day;
+  }
+
+  h3 {
+    color: $font-color-day;
+
+    @media (max-width: 800px) {
+      font-size: 25px;
+    }
+
+    @media (max-width: 713px) {
+      font-size: 23px;
+    }
+
+    @media (max-width: 620px) {
+      font-size: 22px;
+    }
+
+    @media (max-width: 570px) {
+      font-size: 18px;
+    }
+
+    @media (max-width: 466px) {
+      font-size: 13px;
+    }
+
+    @media (max-width: 434px) {
+      font-size: 12px;
+    }
+
+    @media (max-width: 405px) {
+      font-size: 10px;
+    }
+  }
+
+  &.night {
+    background-color: $section-color-night;
+
+    & h2 {
+      color: $font-color-night;
+    }
+
+    & p {
+      color: $font-color-night;
+    }
+  }
+}
+
+nav {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7vh;
+  min-height: 50px;
+  background-color: $nav-color-day;
+  transition: background-color 0.2s linear;
+
+  & ul {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    @media (max-width: 800px) {
+      padding: 0;
+      justify-content: center;
+    }
+
+    & li {
+      text-decoration: none;
+      list-style: none;
+      display: block;
+      padding: 10px 20px;
+
+      @media (max-width: 700px) {
+        padding: 0 10px;
+        justify-content: center;
+      }
+
+      @media (max-width: 620px) {
+        padding: 0 10px;
+      }
+
+      @media (max-width: 466px) {
+        width: 100%;
+        padding: 0 5px;
+      }
+
+      & h3 {
+        text-align: center;
+        cursor: pointer;
+      }
+
+      & h3:hover {
+        position: relative;
+        z-index: 2;
+
+        &::before {
+          content: attr(h1);
+          position: absolute;
+          height: 15%;
+          width: 25%;
+          display: block;
+          animation: underlinehover 2s ease-in-out infinite;
+          background-color: $hover-color;
+          top: 70%;
+          z-index: -1;
+          left: -5%;
+        }
+      }
+
+      & .night {
+        background-color: $section-color-night;
+      }
+    }
+  }
+
+  &.night {
+    background-color: $nav-color-night;
+    color: $font-color-night;
+
+    & ul {
+      & li {
+        & h3 {
+          color: $font-color-night;
+        }
+
+        & h3:hover {
+          &::before {
+            background-color: $hover-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+aside {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transition: background-color 0.2s linear;
+
+  & section {
+    width: 80%;
+    padding: 20px 20px 0;
+    height: 50%;
+    align-self: flex-start;
+    text-align: center;
+    border-radius: 50px;
+    margin: 50px auto;
+    max-width: 1000px;
+    animation: moveelement 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+
+    & a {
+      color: $font-color-day;
+      text-decoration: none;
+
+      &:hover {
+        position: relative;
+        z-index: 2;
+
+        &::before {
+          content: attr(h1);
+          position: absolute;
+          height: 15%;
+          width: 25%;
+          display: block;
+          animation: underlinehover 2s ease-in-out infinite;
+          background-color: $hover-color-section;
+          top: 70%;
+          z-index: -1;
+          left: 1%;
+        }
+      }
+    }
+
+    h1 {
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+
+      &::before {
+        content: attr(h1);
+        position: absolute;
+        display: block;
+        background-color: $hover-color-section;
+        z-index: -1;
+        height: 15% !important;
+        width: 100% !important;
+        top: 60% !important;
+        left: 0% !important;
+      }
+    }
+  }
+
+  & #work {
+    color: black;
+    width: 100%;
+
+    & p {
+      font-weight: bold;
+    }
+
+    & li {
+      list-style-type: none;
+    }
+  }
+
+  & #education {
+    text-align: center;
+
+    & :nth-child(1) {
+      padding-bottom: 5px;
+      font-weight: bold;
+    }
+
+    & div {
+      padding-bottom: 5px;
+    }
+  }
+
+  & #projects {
+    width: 80%;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1000px;
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+      padding: 0;
+
+      & .content {
+        width: 100% !important;
+      }
+    }
+
+    & .photo {
+      transform: translateY(10%);
+      border: 2px solid $hover-color;
+      height: 300px;
+      width: 300px;
+      max-width: 300px;
+      display: flex;
+      align-self: center;
+      border-radius: 30%;
+      background-image: url("./Blackjack.PNG");
+      background-position: center;
+      background-size: cover;
+    }
+
+    & .content {
+      width: 50%;
+      height: 90%;
+      max-width: 700px;
+
+      @media (max-width: 800px) {
+        padding-top: 50px;
+      }
+    }
+  }
+
+  & #about {
+    width: 80%;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1200px;
+
+    @media (max-width: 800px) {
+      flex-direction: column;
+
+      & .content {
+        width: 100% !important;
+      }
+    }
+
+    & .photo {
+      transform: translateY(-10%);
+      border: 2px solid $hover-color;
+      height: 300px;
+      width: 300px;
+      max-width: 300px;
+      display: flex;
+      align-self: center;
+      border-radius: 50%;
+      background-image: url("./photo.png");
+      background-position: center;
+      background-size: cover;
+
+      &.night {
+        background-image: url("./photo-night.png");
+      }
+    }
+
+    & .content {
+      width: 50%;
+      height: 90%;
+      max-width: 700px;
+
+      & div {
+        padding: 5px 0;
+      }
+    }
+  }
+
+  &.night {
+    color: $font-color-night;
+
+    & section {
+      & h1 {
+        color: $font-color-night;
+      }
+
+      & ul {
+        color: $font-color-night;
+      }
+
+      &#work {
+        & h3 {
+          color: $font-color-night;
+        }
+      }
+
+      &#projects {
+        color: $font-color-night;
+
+        & a {
+          color: $font-color-night;
+        }
+      }
+
+      &#about {
+        & a {
+          color: $font-color-night;
+        }
+
+        & .photo {
+          background-image: url("./photo-night.png");
+        }
+      }
+    }
+  }
+}
+
+@keyframes underlinehover {
+  0% {
+    width: 25%;
+  }
+
+  50% {
+    width: 95%;
+  }
+
+  100% {
+    width: 25%;
+  }
+}
+
+@keyframes moveelement {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(2%);
+  }
+}
